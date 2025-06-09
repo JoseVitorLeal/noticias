@@ -1,3 +1,4 @@
+/* Reset e base */
 * {
   margin: 0;
   padding: 0;
@@ -30,23 +31,24 @@ body.escurecer::before {
   left: 0;
 }
 
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-
   max-width: 1110px;
   margin-inline: auto;
+  margin-bottom: 2rem;
 }
 
-header button {
+header > button {
   border: none;
   background: none;
   width: fit-content;
   cursor: pointer;
 }
 
+/* Menu Mobile */
 header nav.mobile {
   position: fixed;
   background-color: var(--almost-white);
@@ -55,12 +57,10 @@ header nav.mobile {
   height: 100vh;
   width: 16rem;
   z-index: 999;
-
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
   gap: 1.5rem;
-
   transition: 0.7s;
 }
 
@@ -68,9 +68,9 @@ header nav.mobile.abrir {
   right: 0;
 }
 
-header nav button{
-    align-self: flex-end;
-    margin-bottom: 4rem;
+header nav.mobile button {
+  align-self: flex-end;
+  margin-bottom: 4rem;
 }
 
 header .mobile a {
@@ -80,15 +80,48 @@ header .mobile a {
   line-height: 1.5rem;
 }
 
+/* Menu Desktop */
 header .desktop {
-    display: none;
+  display: none;
+  gap: 2.5rem;
+}
+
+header .desktop a {
+  font-size: 0.9375rem;
+  line-height: 1.625rem;
+  text-decoration: none;
+  color: var(--gunmetal);
+  position: relative;
+}
+
+header .desktop a:hover {
+  color: var(--vermilion);
+}
+
+header .desktop a::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--vermilion);
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+header .desktop a:hover::after {
+  transform: scaleX(1);
 }
 
 main {
-    max-width: 1110px;
-    margin-inline: auto;
+  max-width: 1110px;
+  margin-inline: auto;
 }
 
+/* Primeira seção */
 .primeira-secao {
   margin-bottom: 4rem;
 }
@@ -96,6 +129,11 @@ main {
 .primeira-secao img {
   width: 100%;
   margin-bottom: 1.5rem;
+}
+
+.primeira-secao h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .primeira-secao p {
@@ -115,8 +153,14 @@ main {
   font-size: 0.875rem;
   letter-spacing: 0.275rem;
   line-height: 1.5rem;
+  cursor: pointer;
 }
 
+.primeira-secao button:hover {
+  background-color: var(--dark-blue);
+}
+
+/* Segunda seção */
 .segunda-secao {
   background-color: var(--dark-blue);
   margin-bottom: 4rem;
@@ -126,7 +170,6 @@ main {
 .segunda-secao h2 {
   color: var(--yellow);
   font-size: 2rem;
-  line-height: 100%;
   margin-bottom: 2.2rem;
 }
 
@@ -139,7 +182,6 @@ main {
 .segunda-secao h3 {
   color: var(--almost-white);
   font-size: 1.25rem;
-  line-height: 1.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
 }
@@ -150,6 +192,7 @@ main {
   line-height: 1.625rem;
 }
 
+/* Terceira seção */
 .terceira-secao > div {
   display: flex;
   align-items: center;
@@ -164,7 +207,6 @@ main {
 .terceira-secao strong {
   color: var(--silver);
   font-size: 2rem;
-  line-height: 100%;
 }
 
 .terceira-secao h2 {
@@ -173,10 +215,15 @@ main {
   font-weight: 800;
   line-height: 1.5rem;
   margin-block: 0.6rem;
+  transition: color 0.3s;
+}
+
+.terceira-secao h2:hover {
+  color: var(--vermilion);
 }
 
 .terceira-secao a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .terceira-secao p {
@@ -185,67 +232,43 @@ main {
   color: var(--gunmetal);
 }
 
-
+/* Responsivo desktop */
 @media (min-width: 1110px) {
- 
- 
   header > button {
     display: none;
   }
 
   header .desktop {
     display: flex;
-    gap: 2.5rem;
   }
 
-  header .desktop a {
-    font-size: 0.9375rem;
-    line-height: 1.625rem;
-    text-decoration: none;
-    color: var(--gunmetal);
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.75rem;
   }
 
-  header .desktop a:hover {
-    color: var(--vermilion);
+  .primeira-secao {
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
   }
 
-     main {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1.75rem;
-}
+  .primeira-secao img {
+    margin: 0;
+  }
 
-.primeira-secao {
-  grid-column: 1 / 3;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.75rem;
-}
+  .primeira-secao h1 {
+    font-size: 3.5rem;
+  }
 
-    .primeira-secao img {
-  margin: 0;
-}
+  .segunda-secao h2 {
+    font-size: 2.5rem;
+  }
 
-.primeira-secao h1 {
-  font-size: 3.5rem;
-}
-
-.primeira-secao button:hover {
-    background-color: var(--dark-blue);
-    cursor: pointer;
-}
-
-.segunda-secao h2 {
-  font-size: 2.5rem;
-}
-
-.terceira-secao {
-  display: flex;
-  grid-column: 1 / 4;
-}
-
-.terceira-secao h2:hover {
-    color: var(--vermilion)
-}
-
+  .terceira-secao {
+    display: flex;
+    grid-column: 1 / 4;
+  }
 }

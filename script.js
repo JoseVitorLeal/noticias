@@ -1,19 +1,15 @@
-const botaoAbrir = document.querySelector("header > button")
-const botaoFechar = document.querySelector("header nav button")
+// script.js
 
-const body = document.querySelector("body")
-const nav = document.querySelector("header .mobile")
+document.addEventListener('DOMContentLoaded', () => {
+  const openBtn = document.querySelector('header > button');
+  const closeBtn = document.querySelector('nav.mobile > button');
+  const mobileNav = document.querySelector('nav.mobile');
 
-botaoAbrir.addEventListener('click', abrirMenu)
-botaoFechar.addEventListener('click', fecharMenu)
+  openBtn.addEventListener('click', () => {
+    mobileNav.classList.add('active');
+  });
 
-function abrirMenu() {
-  body.classList.add("escurecer")
-  nav.classList.add("abrir")
-}
-
-function fecharMenu() {
-  body.classList.remove("escurecer")
-  nav.classList.remove("abrir")
-}
-
+  closeBtn.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+  });
+});
